@@ -1,7 +1,7 @@
 
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import Login from './components/auth/Login';
-import NewCount from './components/auth/User'
+import NewCount from './components/auth/NewCount'
 import Books from './components/books/Books'
 
 function App() {
