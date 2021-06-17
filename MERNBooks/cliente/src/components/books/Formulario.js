@@ -51,33 +51,35 @@ const Formulario = ({ addBook }) => {
   };
 
   return (
-    <Fragment>
-      <h2>Crear Book</h2>
+    <div className="formulario">
+    <Fragment >
+      <h2 className="label">Crear Book</h2>
 
       {error ? <p >ALL FIELDS ARE REQUIRED</p> : null}
 
       <form onSubmit={submitBook}>
-        <label>Title of the book</label>
+      
+        <label className="label">Title of the book</label>
         <input
           type="text"
           name="title"
-         
+          className="input-text"
           placeholder="title"
           onChange={actualizarState}
           value={title}
         />
 
-        <label>Author of the book</label>
+        <label className="label">Author of the book</label>
         <input
           type="text"
           name="author"
-         
+          className="input-text"
           placeholder="author"
           onChange={actualizarState}
           value={author}
         />
 
-        <label>Year it was published</label>
+        <label className="label">Year it was published</label>
         <input
           type="number"
           min="1900"
@@ -85,16 +87,18 @@ const Formulario = ({ addBook }) => {
           step="1"
           value="2021"
           name="year"
-        
+          className="input-text"
           onChange={actualizarState}
           value={year}
         />
 
-        <button type="submit" >
+        <button type="submit" className="btn btn-primario btn-submit btn-block">
           Agregar Book
         </button>
+       
       </form>
     </Fragment>
+    </div>
   );
 };
 

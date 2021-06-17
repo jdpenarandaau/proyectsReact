@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import Formulario from "./Formulario";
 import Book from "./Book";
+import ListBook from "./ListBook";
 
 function Books() {
   // books en local storage
@@ -41,16 +42,15 @@ function Books() {
     <Fragment>
       <h1>book manager</h1>
 
-      <div className="container">
-        <div >
-          <div >
+      <div>
+        <div>
+          <div>
             <Formulario addBook={addBook} />
           </div>
-          <div >
+          <div>
             <h2>{titulo}</h2>
-            {books.map((book) => (
-              <Book key={book.id} book={book} removeBook={removeBook} />
-            ))}
+           
+            <ListBook/>
           </div>
         </div>
       </div>
