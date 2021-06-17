@@ -9,7 +9,7 @@ router.post(
   "/",
 
   auth,
-  [check("title", "El titulo es obligatorio").not().isEmpty()],
+  [check("title", "The title is required").not().isEmpty()],
 
   bookController.createBook
 );
@@ -46,7 +46,7 @@ router.get(
 router.put(
   "/:id",
   auth,
-  [check("title", "El titulo es obligatorio").not().isEmpty()],
+  [check("title", "The title is required ").not().isEmpty()],
   bookController.updateBook
 );
 

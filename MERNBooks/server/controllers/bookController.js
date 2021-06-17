@@ -2,10 +2,10 @@ const Book = require("../models/Book");
 const { validationResult } = require("Express-validator");
 
 exports.createBook = async (req, res) => {
-  const errores = validationResult(req);
+  const error = validationResult(req);
 
-  if (!errores.isEmpty()) {
-    return res.status(400).json({ errores: errores.array() });
+  if (!error.isEmpty()) {
+    return res.status(400).json({ error: error.array() });
   }
 
   try {
@@ -17,7 +17,7 @@ exports.createBook = async (req, res) => {
     res.json(book);
   } catch (error) {
     console.log(error);
-    res.status(500).send("Hubo un error");
+    res.status(500).send("There was a mistake ");
   }
 };
 
@@ -33,7 +33,7 @@ exports.getBook = async (req, res) => {
     res.json({ books });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Hubo un error");
+    res.status(500).send("There was a mistake ");
   }
 };
 
@@ -45,19 +45,19 @@ exports.getBookId = async (req, res) => {
 
     // si el book existe o no
     if (!book) {
-      return res.status(404).json({ msg: "Book no encontrado" });
+      return res.status(404).json({ msg: "Book not found" });
     }
 
     // verificar el creador del book
     if (book.userID.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "No Autorizado" });
+      return res.status(401).json({ msg: "Not authorized" });
     }
 
     console.log(book);
     res.json({ book });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Hubo un error");
+    res.status(500).send("There was a mistake");
   }
 };
 
@@ -73,17 +73,17 @@ exports.getBookYear = async (req, res) => {
     res.json({ books });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Hubo un error");
+    res.status(500).send("There was a mistake");
   }
 };
 
 //actualiza book
 
 exports.updateBook = async (req, res) => {
-  const errores = validationResult(req);
+  const error = validationResult(req);
 
-  if (!errores.isEmpty()) {
-    return res.status(400).json({ errores: errores.array() });
+  if (!error.isEmpty()) {
+    return res.status(400).json({ error: error.array() });
   }
 
   // extraer
@@ -117,12 +117,12 @@ exports.updateBook = async (req, res) => {
 
     // si el book existe o no
     if (!book) {
-      return res.status(404).json({ msg: "Book no encontrado" });
+      return res.status(404).json({ msg: "Book not found" });
     }
 
     // verificar el creador del book
     if (book.userID.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "No Autorizado" });
+      return res.status(401).json({ msg: "Not authorized" });
     }
 
     // actualizar
@@ -135,7 +135,7 @@ exports.updateBook = async (req, res) => {
     res.json({ book });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error en el servidor");
+    res.status(500).send("Server error");
   }
 
   // Elimina un book por su id
@@ -148,19 +148,19 @@ exports.deleteBook = async (req, res) => {
 
     // si el book existe o no
     if (!book) {
-      return res.status(404).json({ msg: "Book no encontrado" });
+      return res.status(404).json({ msg: "Book not found" });
     }
 
     // verificar el creador del book
     if (book.userID.toString() !== req.user.id) {
-      return res.status(401).json({ msg: "No Autorizado" });
+      return res.status(401).json({ msg: "Not authorized" });
     }
 
     // Eliminar el Book
     await Book.findOneAndRemove({ _id: req.params.id });
-    res.json({ msg: "Book eliminado " });
+    res.json({ msg: "Book deleted" });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Error en el servidor");
+    res.status(500).send("Server error");
   }
 };

@@ -19,7 +19,7 @@ exports.autenticarUsuario = async (req, res) => {
 
     let user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ msg: " El usuario no existe" });
+      return res.status(400).json({ msg: " Username does not exist" });
     }
 
 

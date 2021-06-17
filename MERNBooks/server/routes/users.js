@@ -11,12 +11,12 @@ const userController = require('../controllers/userController');
 //const { check } = require('express-validator');
 
 // Crea un usuario
-// api/usuarios
+// api/user
 router.post('/',
 [
-  check('name', 'El nombre es obligatorio').not().isEmpty(),
-  check('email', 'Agrega un email válido').isEmail(),
-  check('password', 'El password debe ser minimo de 6 caracteres').isLength({ min: 6})
+  check('name', 'The name is required').not().isEmpty(),
+  check('email', 'Add a valid email').isEmail(),
+  check('password', 'The password must be at least 6 characters').isLength({ min: 6})
 ],
  userController.createUser
 );
@@ -24,8 +24,3 @@ router.post('/',
 
 module.exports = router;
 
- //   [
-   //     check('email', 'Agrega un email válido').isEmail(),
-     //   check('password', 'El password debe ser minimo de 6 caracteres').isLength({ min: 6})
-   // ],
- // usuarioController.crearUsuario

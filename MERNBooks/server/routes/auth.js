@@ -11,8 +11,8 @@ const authController = require('../controllers/authController')
 // api/utih
 router.post('/',
 [
-  check('email', 'Agrega un email válido').isEmail(),
-  check('password', 'El password debe ser minimo de 6 caracteres').isLength({ min: 6})
+  check('email', 'Add a valid email').isEmail(),
+  check('password', 'The password must be at least 6 characters').isLength({ min: 6})
 ],
 authController.autenticarUsuario
 
@@ -21,8 +21,3 @@ authController.autenticarUsuario
 
 module.exports = router;
 
- //   [
-   //     check('email', 'Agrega un email válido').isEmail(),
-     //   check('password', 'El password debe ser minimo de 6 caracteres').isLength({ min: 6})
-   // ],
- // usuarioController.crearUsuario
